@@ -1,0 +1,16 @@
+NAME
+    Async::Callback::Test - Test Module for Async::Callback
+
+SYNOPSIS
+      use Async::Callback::Test;
+
+DESCRIPTION
+    This module's sole purpose is to provide a test environment for
+    Async::Callback. It should not be used for any other purpose.
+
+AUTHOR
+    David M. Lloyd <dmlloyd@tds.net>
+
+SEE ALSO
+    the Async::Callback manpage.
+

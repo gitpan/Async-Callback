@@ -1,0 +1,94 @@
+NAME
+    Callback - Perl extension for adding asynchronous C callbacks.
+
+SYNOPSIS
+      use Callback;
+
+DESCRIPTION
+    This module allows you to register a callback with Perl that will be
+    called between opcodes. Your callback can be run once or continuously.
+
+USAGE IN XS
+    To use the Callback manpage in your modules, you must:
+
+    1. Include the Callback.h header file in your XS.
+
+    2. Call the CALLBACK_SETUP macro from your C section.
+
+    3. Call the CALLBACK_INIT macro from the BOOT: section.
+
+    4. Use the register_callback, enable_callback, disable_callback, and
+    delete_callback functions to manage your callbacks.
+
+    Here's an example of CALLBACK_SETUP and CALLBACK_INIT:
+
+      #include "EXTERN.h"
+      #include "perl.h"
+      #include "XSUB.h"
+
+      #include "Callback.h"
+  
+      CALLBACK_SETUP;
+  
+      MODULE = MyModule     PACKAGE = MyModule
+  
+      BOOT:
+          CALLBACK_INIT;
+
+MANAGING CALLBACKS
+    There are four functions used to manage your callbacks:
+    register_callback, enable_callback, disable_callback, and
+    delete_callback.
+
+  Function: I32 register_callback(callback_t callback)
+
+    Register a callback. Set callback to the function you want to have
+    called. This function returns a handle that can be used to enable,
+    disable, or delete the callback. handle is an I32. This function can be
+    called from within a callback.
+
+  Function: void enable_callback(I32 handle, void *data)
+
+    Enable a callback whose handle was returned from register_callback. The
+    data parameter is a void pointer that will be passed to the callback.
+    This function is threadsafe if you have linked your Perl against
+    libpthread. This function can be called from within a callback.
+
+  Function: void disable_callback(I32 handle)
+
+    Disable a callback whose handle was returned from register_callback. If
+    you are inside a callback, you may only disable the callback that you
+    are in. This function is threadsafe if you have linked your Perl against
+    libpthread.
+
+  Function: void delete_callback(I32 handle)
+
+    Delete a callback whose handle was returned from register_callback. Note
+    that handle will be invalidated by this call and should not be used
+    afterwards. This function should not be called from within a callback.
+
+THE CALLBACK FUNCTION
+    The callback function should use this prototype:
+
+      void callback(void *data);
+
+    The data parameter will hold the same pointer that was passed in via
+    enable_callback. Inside this callback, you can use any Perl API routine,
+    including calling a Perl function. Note that callbacks are always
+    disabled during a callback function.
+
+BUGS
+    This module will disable the Perl debugger.
+
+    This module is not re-entrant. Using this module in a re-entrant fashion
+    will cause deadlocks or core dumps.
+
+    This module does not support Win32 or other non-Pthread mutexes, because
+    I don't know how to do that. Let me know if you do.
+
+AUTHOR
+    David M. Lloyd <dmlloyd@tds.net>
+
+SEE ALSO
+    the perlguts manpage.
+

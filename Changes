@@ -1,0 +1,7 @@
+Revision history for Perl extension Callback.
+
+0.90.00  Tue Jul 10 10:30:36 2001
+	- original version; development and proof-of-concept testing
+
+1.00.00  Wed Jul 11 13:20:00 2001
+	- ready for production.  Various bugfixes.  Tests added.
