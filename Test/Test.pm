@@ -11,7 +11,7 @@ require DynaLoader;
 
 our @ISA = qw(Exporter DynaLoader);
 
-our $VERSION = '1.00.00';
+our $VERSION = '1.00.01';
 
 our @EXPORT = qw(start_test1 finish_test1);
 

@@ -1,5 +1,5 @@
-use Callback;
-use Callback::Test;
+use Async::Callback;
+use Async::Callback::Test;
 
 print "1..5\n";
 

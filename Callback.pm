@@ -9,7 +9,7 @@ require DynaLoader;
 
 our @ISA = qw(Exporter DynaLoader);
 
-our $VERSION = '1.00.00';
+our $VERSION = '1.00.01';
 our $COMPAT_VERSION = '1.000';
 
 =pod
@@ -116,7 +116,7 @@ L<perlguts>.
 
 =cut
 
-bootstrap Callback ($VERSION);
+bootstrap Async::Callback ($VERSION);
 
 1;
 __END__
