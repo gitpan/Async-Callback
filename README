@@ -1,15 +1,15 @@
 NAME
-    Callback - Perl extension for adding asynchronous C callbacks.
+    Async::Callback - Perl extension for adding asynchronous C callbacks.
 
 SYNOPSIS
-      use Callback;
+      use Async::Callback;
 
 DESCRIPTION
     This module allows you to register a callback with Perl that will be
     called between opcodes. Your callback can be run once or continuously.
 
 USAGE IN XS
-    To use the Callback manpage in your modules, you must:
+    To use the Async::Callback manpage in your modules, you must:
 
     1. Include the Callback.h header file in your XS.
 

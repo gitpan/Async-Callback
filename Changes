@@ -8,3 +8,6 @@ Revision history for Perl extension Callback.
 
 1.00.01  Fri Jul 20 08:58:00 2001
 	- some files still referred to Callback instead of Async::Callback.  Whoops.
+
+1.00.02  Fri Jul 20 09:23:00 2001
+	- README was out of date, fixed.

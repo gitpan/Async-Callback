@@ -9,7 +9,7 @@ require DynaLoader;
 
 our @ISA = qw(Exporter DynaLoader);
 
-our $VERSION = '1.00.01';
+our $VERSION = '1.00.02';
 our $COMPAT_VERSION = '1.000';
 
 =pod
